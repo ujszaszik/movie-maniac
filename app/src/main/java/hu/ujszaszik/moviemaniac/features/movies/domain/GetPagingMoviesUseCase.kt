@@ -14,9 +14,8 @@ import javax.inject.Inject
 class GetPagingMoviesUseCase @Inject constructor(
     private val repository: IMoviesRepository
 ) {
-
-    operator fun invoke(): Flow<PagingData<MovieUiModel>> =
-        repository.getMoviesPaging()
+    operator fun invoke(onInitialLoad: suspend (Boolean) -> Unit): Flow<PagingData<MovieUiModel>> =
+        repository.getMoviesPaging(onInitialLoad)
             .map { pagingData ->
                 pagingData.map {
                     it.toUiModel()

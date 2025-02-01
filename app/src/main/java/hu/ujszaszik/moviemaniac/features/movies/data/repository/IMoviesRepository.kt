@@ -4,5 +4,5 @@ import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 
 interface IMoviesRepository {
-    fun getMoviesPaging(): Flow<PagingData<MovieData>>
+    fun getMoviesPaging(onInitialLoad: suspend (Boolean) -> Unit): Flow<PagingData<MovieData>>
 }
