@@ -27,7 +27,7 @@ class GetPagingMoviesUseCase @Inject constructor(
         MovieUiModel(
             id = id,
             title = title,
-            imageUrl = "${WebService.BASE_URL}$posterPath",
+            imageUrl = "${WebService.IMAGE_URL}$imagePath",
             rating = rating.roundToOneDecimal(),
             revenue = revenue.toMillionsText(),
             budget = budget.toMillionsText()

@@ -2,7 +2,6 @@ package hu.ujszaszik.moviemaniac.features.movies.presentation.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -20,7 +19,7 @@ fun MoviesScreen(viewModel: MoviesViewModel = hiltViewModel()) {
             items = pagingMovies,
             cellSize = orientationBased(portrait = 3, landscape = 5)
         ) {
-            Text(it.title)
+            MovieItemScreen(it)
         }
     }
 }

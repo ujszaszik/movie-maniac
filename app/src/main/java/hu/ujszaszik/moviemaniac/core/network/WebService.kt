@@ -20,7 +20,8 @@ class WebService @Inject constructor(val client: HttpClient) {
     }
 
     companion object {
-        const val BASE_URL = "https://api.themoviedb.org/3"
+        const val BASE_URL = "https://api.themoviedb.org/3/"
+        const val IMAGE_URL = "https://image.tmdb.org/t/p/original"
         const val AUTHORIZATION_HEADER = "Authorization"
         const val TOKEN = "Bearer ${BuildConfig.API_KEY}"
     }

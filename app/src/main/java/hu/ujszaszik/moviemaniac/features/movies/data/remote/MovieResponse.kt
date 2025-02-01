@@ -15,8 +15,8 @@ data class MovieItemResponse(
     val id: Long,
     @SerialName("title")
     val title: String,
-    @SerialName("poster_path")
-    val posterPath: String,
+    @SerialName("backdrop_path")
+    val imagePath: String,
     @SerialName("vote_average")
     val rating: Double
 )

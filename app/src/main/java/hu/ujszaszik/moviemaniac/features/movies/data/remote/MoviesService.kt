@@ -9,11 +9,11 @@ class MoviesService @Inject constructor(
 ) {
 
     suspend fun getMovies(page: Long): MovieResponse =
-        webService.get("/discover/movie") {
+        webService.get("discover/movie") {
             parameter("page", page)
             parameter("sort_by", "popularity.desc")
         }
 
     suspend fun getDetailsById(id: Long): MovieDetailResponse =
-        webService.get("/movie/$id")
+        webService.get("movie/$id")
 }

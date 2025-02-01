@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.bundles.kotlinLibs)
     implementation(libs.bundles.networkLibs)
     implementation(libs.bundles.pagingLibs)
+    implementation(libs.compose.coil)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

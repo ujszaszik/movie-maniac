@@ -33,7 +33,7 @@ class MoviesRepository @Inject constructor(
                     id = it.id,
                     title = it.title,
                     rating = it.rating,
-                    posterPath = it.posterPath,
+                    imagePath = it.imagePath,
                     revenue = detail?.revenue ?: 0L,
                     budget = detail?.budget ?: 0L
                 )

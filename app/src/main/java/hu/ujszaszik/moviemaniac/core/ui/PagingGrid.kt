@@ -13,8 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 
+interface PagingItem {
+    val id: Long
+}
+
 @Composable
-fun <T : Any> PagingGrid(
+fun <T : PagingItem> PagingGrid(
     modifier: Modifier = Modifier,
     items: LazyPagingItems<T>,
     cellSize: Int,
@@ -27,7 +31,7 @@ fun <T : Any> PagingGrid(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        items(items.itemCount, key = { it }) { index ->
+        items(items.itemCount, key = { items[it]?.id ?: 0 }) { index ->
             val item = items[index]
             item?.let { itemContent.invoke(item) }
         }
