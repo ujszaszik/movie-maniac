@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import hu.ujszaszik.moviemaniac.features.filters.data.model.Genre
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GenreDao {
@@ -13,7 +14,7 @@ interface GenreDao {
     fun insertGenres(list: List<Genre>)
 
     @Query("SELECT * FROM genre ORDER BY name ASC")
-    fun getGenres(): List<Genre>
+    fun getGenres(): Flow<List<Genre>>
 
     @Query("SELECT COUNT(*) FROM genre")
     fun getSize(): Int
