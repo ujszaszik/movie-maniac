@@ -3,9 +3,12 @@ package hu.ujszaszik.moviemaniac.features.movies.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import hu.ujszaszik.moviemaniac.core.operation.simpleCacheOperation
 import hu.ujszaszik.moviemaniac.features.filters.data.model.Genre
 import hu.ujszaszik.moviemaniac.features.filters.data.repository.IFiltersRepository
-import hu.ujszaszik.moviemaniac.features.movies.data.remote.MovieDetailResponse
+import hu.ujszaszik.moviemaniac.features.movies.data.local.MovieDatabase
+import hu.ujszaszik.moviemaniac.features.movies.data.local.MovieDetail
+import hu.ujszaszik.moviemaniac.features.movies.data.local.toEntity
 import hu.ujszaszik.moviemaniac.features.movies.data.remote.MovieItemResponse
 import hu.ujszaszik.moviemaniac.features.movies.data.remote.MoviesService
 import kotlinx.coroutines.Dispatchers
@@ -20,9 +23,11 @@ import javax.inject.Singleton
 @Singleton
 class MoviesRepository @Inject constructor(
     private val moviesService: MoviesService,
+    movieDatabase: MovieDatabase,
     private val filtersRepository: IFiltersRepository
 ) : IMoviesRepository {
 
+    private val dao = movieDatabase.dao()
     private var pagingSource: MoviesPagingSource? = null
 
     private val pager = { genre: Genre?, onInitialLoad: suspend (Boolean) -> Unit ->
@@ -59,13 +64,22 @@ class MoviesRepository @Inject constructor(
             }
         }
 
-    private suspend fun getMovieDetails(items: List<MovieItemResponse>): Map<Long, MovieDetailResponse> {
+    private suspend fun getMovieDetails(items: List<MovieItemResponse>): Map<Long, MovieDetail?> {
         return withContext(Dispatchers.IO) {
             items.associate { item ->
-                item.id to async { moviesService.getDetailsById(item.id) }.await()
+                item.id to async {
+                    simpleCacheOperation(
+                        remoteCall = { moviesService.getDetailsById(item.id) },
+                        saveLocal = { dao.insertDetail(it) },
+                        getLocal = { dao.getMovieById(item.id) },
+                        mapper = { it.toEntity(item.id) },
+                        refreshCondition = { dao.getMovieById(item.id) == null }
+                    )
+                }.await()
             }
         }
     }
+
 
     override fun reloadMovies() = pagingSource?.invalidate()
 }

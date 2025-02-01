@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-inline fun <Remote, Local> cacheOperation(
+inline fun <Remote, Local> cacheFlowOperation(
     crossinline remoteCall: suspend () -> Remote,
     crossinline saveLocal: suspend (Local) -> Unit,
     crossinline getLocal: suspend () -> Flow<Local>,
