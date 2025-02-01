@@ -5,17 +5,18 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
-suspend inline fun <Remote, Local> cacheOperation(
+inline fun <Remote, Local> cacheOperation(
     crossinline remoteCall: suspend () -> Remote,
     crossinline saveLocal: suspend (Local) -> Unit,
     crossinline getLocal: suspend () -> Local,
     crossinline mapper: (Remote) -> Local,
     crossinline refreshCondition: () -> Boolean
-): Flow<Local> = withContext(Dispatchers.IO) {
+): Flow<Local> =
     flow {
-        if (refreshCondition()) {
-            saveLocal(mapper(remoteCall()))
+        withContext(Dispatchers.IO) {
+            if (refreshCondition()) {
+                saveLocal(mapper(remoteCall()))
+            }
+            emit(getLocal())
         }
-        emit(getLocal())
     }
-}

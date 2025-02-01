@@ -14,7 +14,7 @@ class FiltersRepository @Inject constructor(
 
     private val dao = database.dao()
 
-    override suspend fun getFilters(): Flow<List<Genre>> =
+    override fun getFilters(): Flow<List<Genre>> =
         cacheOperation(
             remoteCall = { service.getFilters() },
             saveLocal = { dao.insertGenres(it) },
