@@ -65,6 +65,11 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
 
+    // Room
+    implementation(libs.bundles.roomLibs)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.room.compiler)
+
     implementation(libs.bundles.kotlinLibs)
     implementation(libs.bundles.networkLibs)
     implementation(libs.bundles.pagingLibs)
