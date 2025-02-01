@@ -15,20 +15,24 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class MoviesRepository @Inject constructor(
     private val moviesService: MoviesService,
     private val filtersRepository: IFiltersRepository
 ) : IMoviesRepository {
 
-    val pager = { genre: Genre?, onInitialLoad: suspend (Boolean) -> Unit ->
+    private var pagingSource: MoviesPagingSource? = null
+
+    private val pager = { genre: Genre?, onInitialLoad: suspend (Boolean) -> Unit ->
         Pager(
             config = PagingConfig(pageSize = 20, enablePlaceholders = false),
             pagingSourceFactory = {
                 MoviesPagingSource(
                     onInitialLoad = { onInitialLoad(it) },
                     loadSinglePage = { getMovies(it, genre) }
-                )
+                ).also { pagingSource = it }
             }
         )
     }
@@ -62,4 +66,6 @@ class MoviesRepository @Inject constructor(
             }
         }
     }
+
+    override fun reloadMovies() = pagingSource?.invalidate()
 }

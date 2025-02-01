@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface IMoviesRepository {
     fun getMoviesPaging(onInitialLoad: suspend (Boolean) -> Unit): Flow<PagingData<MovieData>>
+    fun reloadMovies(): Unit?
 }

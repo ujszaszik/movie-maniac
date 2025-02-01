@@ -15,7 +15,7 @@ import hu.ujszaszik.moviemaniac.features.filters.data.model.Genre
 import hu.ujszaszik.moviemaniac.ui.theme.DefaultButtonShape
 import hu.ujszaszik.moviemaniac.ui.theme.Typography
 import hu.ujszaszik.moviemaniac.ui.theme.defaultCardHeight
-import hu.ujszaszik.moviemaniac.ui.theme.defaultPadding
+import hu.ujszaszik.moviemaniac.ui.theme.paddingDefault
 import hu.ujszaszik.moviemaniac.ui.theme.filterBgColor
 
 @Composable
@@ -31,7 +31,7 @@ fun FilterItemScreen(item: Genre, onClick: (Genre) -> Unit) {
             ),
             modifier = Modifier
                 .align(Alignment.Center)
-                .padding(defaultPadding)
+                .padding(paddingDefault)
                 .height(defaultCardHeight)
         ) {
             Text(
