@@ -10,5 +10,8 @@ class GetGenreFiltersUseCase @Inject constructor(
 ) {
     operator fun invoke() =
         repository.getFilters()
-            .map { listOf(Genre.all()) + it }
+            .map { filters ->
+                val anySelected = filters.any { it.isSelected }
+                listOf(Genre.all(!anySelected)) + filters
+            }
 }

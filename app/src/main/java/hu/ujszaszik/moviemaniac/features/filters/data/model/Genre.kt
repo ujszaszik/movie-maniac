@@ -24,6 +24,12 @@ data class Genre(
 
     companion object {
         private const val MISSING_ID = -1L
-        fun all() = Genre(id = MISSING_ID, name = "All")
+
+        fun all(isSelected: Boolean = false) =
+            Genre(
+                id = MISSING_ID,
+                name = "All",
+                isSelected = isSelected
+            )
     }
 }
