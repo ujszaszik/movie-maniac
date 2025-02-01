@@ -39,6 +39,13 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+    val apiKey: String by project
+    buildTypes {
+        debug {
+            buildConfigField("String", "API_KEY", "\"$apiKey\"")
+        }
     }
 }
 
