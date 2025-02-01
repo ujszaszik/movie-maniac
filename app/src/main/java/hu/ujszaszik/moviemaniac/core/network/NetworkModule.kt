@@ -96,11 +96,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager {
-        return context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    }
+    fun provideNetworkRequest(): NetworkRequest = NetworkRequest.Builder().build()
 
     @Provides
     @Singleton
-    fun provideNetworkRequest(): NetworkRequest = NetworkRequest.Builder().build()
+    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager {
+        return context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    }
 }

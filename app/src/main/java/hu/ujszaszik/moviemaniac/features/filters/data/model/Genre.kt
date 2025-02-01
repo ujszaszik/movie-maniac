@@ -20,8 +20,6 @@ data class Genre(
     val isSelected: Boolean = false
 ) {
 
-    fun hasId() = id != MISSING_ID
-
     companion object {
         private const val MISSING_ID = -1L
 

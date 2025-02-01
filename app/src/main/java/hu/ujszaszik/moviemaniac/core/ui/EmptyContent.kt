@@ -10,13 +10,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import hu.ujszaszik.moviemaniac.ui.theme.emptyButtonLabel
+import hu.ujszaszik.moviemaniac.ui.theme.emptyTitle
 import hu.ujszaszik.moviemaniac.ui.theme.paddingDouble
 
 @Composable
 fun EmptyContent(
     visible: Boolean,
-    message: String = "No elements available",
-    buttonText: String = "Refresh",
+    message: String = emptyTitle,
+    buttonText: String = emptyButtonLabel,
     onButtonClick: () -> Unit = {}
 ) {
     if (visible) {

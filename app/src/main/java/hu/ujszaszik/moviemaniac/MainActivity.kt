@@ -14,9 +14,6 @@ import hu.ujszaszik.moviemaniac.ui.theme.MovieManiacTheme
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var webService: WebService
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

@@ -4,6 +4,9 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import hu.ujszaszik.moviemaniac.ui.theme.errorButtonLabel
+import hu.ujszaszik.moviemaniac.ui.theme.errorMessageDefault
+import hu.ujszaszik.moviemaniac.ui.theme.errorTitle
 
 @Composable
 fun ErrorDialog(
@@ -14,11 +17,11 @@ fun ErrorDialog(
     if (showError) {
         AlertDialog(
             onDismissRequest = onDismiss,
-            title = { Text("Error") },
-            text = { Text(error?.message ?: "Unexpected error happened.") },
+            title = { Text(errorTitle) },
+            text = { Text(error?.message ?: errorMessageDefault) },
             confirmButton = {
                 Button(onClick = onDismiss) {
-                    Text("OK")
+                    Text(errorButtonLabel)
                 }
             }
         )
