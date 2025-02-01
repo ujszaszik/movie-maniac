@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kapt)
+    kotlin("plugin.serialization") version "2.0.0"
 }
 
 android {
@@ -56,6 +57,9 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
+
+    implementation(libs.bundles.kotlinLibs)
+    implementation(libs.bundles.networkLibs)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
