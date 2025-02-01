@@ -1,7 +1,9 @@
 package hu.ujszaszik.moviemaniac.features.app
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,7 +15,7 @@ import hu.ujszaszik.moviemaniac.features.filters.presentation.ui.FiltersScreen
 import hu.ujszaszik.moviemaniac.features.movies.presentation.ui.MoviesScreen
 
 @Composable
-fun AppScreen() {
+fun AppScreen(innerPadding: PaddingValues) {
     var isMainPage by remember { mutableStateOf(true) }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -24,6 +26,7 @@ fun AppScreen() {
                 )
             } else {
                 FiltersScreen(
+                    modifier = Modifier.padding(innerPadding),
                     onFinished = { isMainPage = true }
                 )
             }

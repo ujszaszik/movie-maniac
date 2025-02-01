@@ -4,14 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import hu.ujszaszik.moviemaniac.core.network.WebService
 import hu.ujszaszik.moviemaniac.features.app.AppScreen
 import hu.ujszaszik.moviemaniac.ui.theme.MovieManiacTheme
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -24,8 +22,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MovieManiacTheme {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    AppScreen()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    AppScreen(innerPadding)
                 }
             }
         }
