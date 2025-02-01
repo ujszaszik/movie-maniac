@@ -15,7 +15,9 @@ suspend fun <T> retry(
         try {
             return block()
         } catch (e: Exception) {
-            lastException = e
+            lastException = if (!NetworkMonitor.isConnected()) {
+                CancellationException("There is no internet connection.")
+            } else null
             attempt++
             if (attempt < maxRetries) {
                 delay(delayMillis)
