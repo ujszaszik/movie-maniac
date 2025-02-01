@@ -1,4 +1,4 @@
-package hu.ujszaszik.moviemaniac.core.network
+package hu.ujszaszik.moviemaniac.core.operation
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

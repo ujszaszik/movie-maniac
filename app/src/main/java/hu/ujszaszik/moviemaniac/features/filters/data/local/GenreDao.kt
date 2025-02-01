@@ -19,6 +19,9 @@ interface GenreDao {
     @Query("SELECT COUNT(*) FROM genre")
     fun getSize(): Int
 
+    @Query("SELECT * FROM genre WHERE isSelected = 1 LIMIT 1")
+    fun getSelected(): Flow<Genre?>
+
     @Query("UPDATE genre SET isSelected = CASE WHEN id = :id THEN 1 ELSE 0 END")
     fun setSelected(id: Long)
 }

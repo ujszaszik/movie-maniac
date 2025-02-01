@@ -1,6 +1,7 @@
 package hu.ujszaszik.moviemaniac.features.filters.data.repository
 
-import hu.ujszaszik.moviemaniac.core.network.cacheOperation
+import hu.ujszaszik.moviemaniac.core.operation.cacheOperation
+import hu.ujszaszik.moviemaniac.core.operation.localDataOperation
 import hu.ujszaszik.moviemaniac.features.filters.data.local.GenreDatabase
 import hu.ujszaszik.moviemaniac.features.filters.data.model.Genre
 import hu.ujszaszik.moviemaniac.features.filters.data.remote.FiltersService
@@ -24,6 +25,11 @@ class FiltersRepository @Inject constructor(
             mapper = { it.genres },
             refreshCondition = { dao.getSize() == 0 }
         )
+
+    override fun getSelection(): Flow<Genre?> =
+        localDataOperation {
+            dao.getSelected()
+        }
 
     override suspend fun setSelection(id: Long) =
         withContext(Dispatchers.IO) {

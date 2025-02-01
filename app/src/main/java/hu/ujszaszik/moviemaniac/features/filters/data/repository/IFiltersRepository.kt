@@ -5,5 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface IFiltersRepository {
     fun getFilters(): Flow<List<Genre>>
+    fun getSelection(): Flow<Genre?>
     suspend fun setSelection(id: Long)
 }
