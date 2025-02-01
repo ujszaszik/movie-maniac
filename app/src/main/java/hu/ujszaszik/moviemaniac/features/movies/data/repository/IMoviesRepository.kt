@@ -1,6 +1,8 @@
 package hu.ujszaszik.moviemaniac.features.movies.data.repository
 
-interface IMoviesRepository {
+import androidx.paging.PagingData
+import kotlinx.coroutines.flow.Flow
 
-    suspend fun getMovies(page: Long): List<MovieData>
+interface IMoviesRepository {
+    fun getMoviesPaging(): Flow<PagingData<MovieData>>
 }

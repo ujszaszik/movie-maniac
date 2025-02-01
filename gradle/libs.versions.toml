@@ -4,6 +4,7 @@ kotlin = "2.0.0"
 kotlin-json = "1.6.3"
 ktor = "2.3.6"
 coreKtx = "1.15.0"
+paging = "3.3.5"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -29,6 +30,8 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
 
 #hilt
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-compose" }
@@ -54,5 +57,6 @@ hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt-plugin" }
 
 [bundles]
+pagingLibs = ["androidx-paging-runtime", "androidx-paging-compose"]
 kotlinLibs = ["kotlin-serialization-json"]
 networkLibs = ["ktor-client", "ktor-client-serialization", "ktor-client-logging", "ktor-negotiation", "ktor-serialization"]
