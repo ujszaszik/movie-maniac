@@ -27,10 +27,12 @@ class GetPagingMoviesUseCase @Inject constructor(
         MovieUiModel(
             id = id,
             title = title,
-            imageUrl = "${WebService.IMAGE_URL}$imagePath",
+            imageUrl = imagePath.asImageUrl(),
             rating = rating.roundToOneDecimal(),
             revenue = revenue.toMillionsText(),
             budget = budget.toMillionsText()
         )
+
+    private fun String?.asImageUrl() = this?.let { "${WebService.IMAGE_URL}$it" }
 
 }

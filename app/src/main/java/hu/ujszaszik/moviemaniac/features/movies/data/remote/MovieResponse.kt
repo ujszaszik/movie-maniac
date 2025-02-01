@@ -16,7 +16,7 @@ data class MovieItemResponse(
     @SerialName("title")
     val title: String,
     @SerialName("backdrop_path")
-    val imagePath: String,
+    val imagePath: String? = null,
     @SerialName("vote_average")
     val rating: Double
 )

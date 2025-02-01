@@ -31,7 +31,7 @@ fun <T : PagingItem> PagingGrid(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        items(items.itemCount, key = { items[it]?.id ?: 0 }) { index ->
+        items(items.itemCount, key = { it }) { index ->
             val item = items[index]
             item?.let { itemContent.invoke(item) }
         }
