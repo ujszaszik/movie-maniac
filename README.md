@@ -65,3 +65,7 @@ The app follows an MVVM-based Android Clean Architecture, which can be represent
 
 ### **5. Coil - For Remote Images**
 - **Purpose**: A powerful and easy-to-use image loading library for displaying images from remote sources, optimized for performance.
+
+## **Screenshots**
+<img width="283" alt="Képernyőfotó 2025-02-02 - 15 47 55" src="https://github.com/user-attachments/assets/e4938978-36c4-495d-901f-746783e3f824" />
+<img width="283" alt="Képernyőfotó 2025-02-02 - 15 48 04" src="https://github.com/user-attachments/assets/bd523832-1d97-4256-ab8e-6eaed6e36009" />
