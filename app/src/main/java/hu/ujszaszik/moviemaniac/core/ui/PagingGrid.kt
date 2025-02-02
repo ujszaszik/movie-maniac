@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
@@ -32,9 +33,13 @@ fun <T : PagingItem> PagingGrid(
             .fillMaxSize()
             .padding(paddingDouble)
     ) {
-        items(items.itemCount, key = { it }) { index ->
+        items(items.itemCount) { index ->
             val item = items[index]
-            item?.let { itemContent.invoke(item) }
+            item?.let {
+                key(it.id) {
+                    itemContent.invoke(item)
+                }
+            }
         }
 
         items.apply {
