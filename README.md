@@ -47,3 +47,21 @@ If you don’t have an API key, feel free to ask me, and I’ll send you one!
 The app follows an MVVM-based Android Clean Architecture, which can be represented by the following diagram:
 
 <img width="556" alt="Képernyőfotó 2025-02-02 - 15 01 19" src="https://github.com/user-attachments/assets/6798d232-1564-4ccd-bbb8-950196ae39f4" />
+
+
+## **Libraries Used**
+
+### **1. Hilt - Dependency Injection**
+- **Purpose**: Provides a simplified and efficient way to manage dependencies in the project, reducing boilerplate and improving readability.
+
+### **2. Ktor - Network Client (with Ktor Serialization)**
+- **Purpose**: Used for making HTTP requests to remote APIs and handling serialization of responses into Kotlin objects.
+
+### **3. Room - For Local Data Cache**
+- **Purpose**: A database library used for persisting data locally in SQLite, enabling offline capabilities and caching.
+
+### **4. Paging3 - For Paging Data Requests**
+- **Purpose**: Efficiently loads large datasets in chunks (pagination) to improve performance and user experience when displaying lists of items.
+
+### **5. Coil - For Remote Images**
+- **Purpose**: A powerful and easy-to-use image loading library for displaying images from remote sources, optimized for performance.
