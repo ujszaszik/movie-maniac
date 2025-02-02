@@ -69,3 +69,6 @@ The app follows an MVVM-based Android Clean Architecture, which can be represent
 ## **Screenshots**
 <img width="283" alt="Képernyőfotó 2025-02-02 - 15 47 55" src="https://github.com/user-attachments/assets/e4938978-36c4-495d-901f-746783e3f824" />
 <img width="283" alt="Képernyőfotó 2025-02-02 - 15 48 04" src="https://github.com/user-attachments/assets/bd523832-1d97-4256-ab8e-6eaed6e36009" />
+
+## **Contact**
+Feel free to reach out to me with any questions related to this repository at ujszaszi.karesz@gmail.com
