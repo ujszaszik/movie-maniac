@@ -3,6 +3,7 @@ package hu.ujszaszik.moviemaniac.ui.theme
 // Empty
 const val emptyTitle = "No elements available."
 const val emptyButtonLabel = "Refresh"
+const val emptyButtonGoBack = "Go back"
 
 // Error
 const val errorTitle = "Error"

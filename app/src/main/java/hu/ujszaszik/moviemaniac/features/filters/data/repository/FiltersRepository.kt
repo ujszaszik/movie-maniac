@@ -23,6 +23,7 @@ class FiltersRepository @Inject constructor(
             saveLocal = { dao.insertGenres(it) },
             getLocal = { dao.getGenres() },
             mapper = { it.genres },
+            onErrorReturn = { emptyList() },
             refreshCondition = { dao.getSize() == 0 }
         )
 

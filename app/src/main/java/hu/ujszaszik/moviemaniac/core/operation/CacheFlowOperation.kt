@@ -11,11 +11,16 @@ inline fun <Remote, Local> cacheFlowOperation(
     crossinline saveLocal: suspend (Local) -> Unit,
     crossinline getLocal: suspend () -> Flow<Local>,
     crossinline mapper: (Remote) -> Local,
+    crossinline onErrorReturn: () -> Local,
     crossinline refreshCondition: () -> Boolean
 ): Flow<Local> =
     flow {
-        if (refreshCondition()) {
-            saveLocal(mapper(remoteCall()))
+        try {
+            if (refreshCondition()) {
+                saveLocal(mapper(remoteCall()))
+            }
+            emitAll(getLocal())
+        } catch (throwable: Throwable) {
+            onErrorReturn()
         }
-        emitAll(getLocal())
     }.flowOn(Dispatchers.IO)
