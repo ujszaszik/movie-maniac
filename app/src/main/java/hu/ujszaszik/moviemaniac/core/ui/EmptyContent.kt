@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import hu.ujszaszik.moviemaniac.ui.theme.emptyButtonLabel
 import hu.ujszaszik.moviemaniac.ui.theme.emptyTitle
+import hu.ujszaszik.moviemaniac.ui.theme.errorMessageDefault
 import hu.ujszaszik.moviemaniac.ui.theme.paddingDouble
 
 @Composable
@@ -19,6 +20,7 @@ fun EmptyContent(
     visible: Boolean,
     message: String = emptyTitle,
     buttonText: String = emptyButtonLabel,
+    error: Throwable? = null,
     onButtonClick: () -> Unit = {}
 ) {
     if (visible) {
@@ -32,6 +34,13 @@ fun EmptyContent(
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(paddingDouble)
             )
+            error?.let {
+                Text(
+                    text = it.message ?: errorMessageDefault,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.padding(paddingDouble)
+                )
+            }
             Button(onClick = onButtonClick) {
                 Text(buttonText)
             }

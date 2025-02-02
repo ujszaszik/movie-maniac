@@ -14,7 +14,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import hu.ujszaszik.moviemaniac.core.ui.EditIcon
 import hu.ujszaszik.moviemaniac.core.ui.EmptyContent
-import hu.ujszaszik.moviemaniac.core.ui.ErrorDialog
 import hu.ujszaszik.moviemaniac.core.ui.LoadingContent
 import hu.ujszaszik.moviemaniac.core.ui.PagingGrid
 import hu.ujszaszik.moviemaniac.core.ui.orientationBased
@@ -43,14 +42,13 @@ fun MoviesScreen(
                 onError = { error = it }
             ) { MovieItemScreen(it) }
         }
-        ErrorDialog(
-            showError = error != null,
-            error = error,
-            onDismiss = { error = null }
-        )
         EmptyContent(
             visible = isEmpty.value,
-            onButtonClick = { viewModel.invalidate() }
+            error = error,
+            onButtonClick = {
+                error = null
+                viewModel.invalidate()
+            }
         )
     }
 }

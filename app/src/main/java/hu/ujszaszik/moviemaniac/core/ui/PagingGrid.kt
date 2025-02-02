@@ -43,12 +43,13 @@ fun <T : PagingItem> PagingGrid(
         }
 
         items.apply {
-            when (val state = loadState.append) {
-                is LoadState.Loading -> {
+            val refreshState = loadState.refresh
+            when {
+                loadState.append is LoadState.Loading -> {
                     item { CircularProgressIndicator(modifier = Modifier.size(indicatorSize)) }
                 }
 
-                is LoadState.Error -> onError(state.error)
+                refreshState is LoadState.Error -> onError(refreshState.error)
 
                 else -> Unit
             }
