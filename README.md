@@ -1,5 +1,3 @@
-# Movie Maniac
-
 ## Overview
 **MovieManiac** is your ultimate movie companion, providing an easy-to-use mobile platform to discover, explore, and dive into the world of movies. Powered by **The Movie Database (TMDb) API**, the app offers a seamless experience for movie enthusiasts looking for detailed information about movies, ratings, and much more.
 
@@ -44,3 +42,8 @@ To use this application, you will need a **TMDb API key** to access movie data.
 
 3. **Need an API Key?:**
 If you don’t have an API key, feel free to ask me, and I’ll send you one!
+
+## Architecture
+The app follows an MVVM-based Android Clean Architecture, which can be represented by the following diagram:
+
+<img width="556" alt="Képernyőfotó 2025-02-02 - 15 01 19" src="https://github.com/user-attachments/assets/6798d232-1564-4ccd-bbb8-950196ae39f4" />
